@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mapper.IndexImageMapper">
+  <resultMap id="BaseResultMap" type="com.shop.model.IndexImage">
+    <!--@mbg.generated-->
+    <!--@Table index_image-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="image_name" jdbcType="VARCHAR" property="imageName" />
+    <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
+    <result column="image_index" jdbcType="BIT" property="imageIndex" />
+    <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, image_name, image_path, image_index, date_created, created_by, updated_by, date_updated, 
+    delete_flag
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from index_image
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from index_image
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.shop.model.IndexImage">
+    <!--@mbg.generated-->
+    insert into index_image (id, image_name, image_path, 
+      image_index, date_created, created_by, 
+      updated_by, date_updated, delete_flag
+      )
+    values (#{id,jdbcType=BIGINT}, #{imageName,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
+      #{imageIndex,jdbcType=BIT}, #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{dateUpdated,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.model.IndexImage">
+    <!--@mbg.generated-->
+    insert into index_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="imageName != null">
+        image_name,
+      </if>
+      <if test="imagePath != null">
+        image_path,
+      </if>
+      <if test="imageIndex != null">
+        image_index,
+      </if>
+      <if test="dateCreated != null">
+        date_created,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="dateUpdated != null">
+        date_updated,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="imageName != null">
+        #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imageIndex != null">
+        #{imageIndex,jdbcType=BIT},
+      </if>
+      <if test="dateCreated != null">
+        #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="com.shop.model.IndexImage">
+    <!--@mbg.generated-->
+    update index_image
+    <set>
+      <if test="imageName != null">
+        image_name = #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imageIndex != null">
+        image_index = #{imageIndex,jdbcType=BIT},
+      </if>
+      <if test="dateCreated != null">
+        date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateById" parameterType="com.shop.model.IndexImage">
+    <!--@mbg.generated-->
+    update index_image
+    set image_name = #{imageName,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      image_index = #{imageIndex,jdbcType=BIT},
+      date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update index_image
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="image_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.imageName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="image_path = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.imagePath,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="image_index = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.imageIndex,jdbcType=BIT}
+        </foreach>
+      </trim>
+      <trim prefix="date_created = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.dateCreated,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="created_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createdBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updatedBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="date_updated = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.dateUpdated,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="delete_flag = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.deleteFlag,jdbcType=BIT}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into index_image
+    (id, image_name, image_path, image_index, date_created, created_by, updated_by, date_updated, 
+      delete_flag)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.imageName,jdbcType=VARCHAR}, #{item.imagePath,jdbcType=VARCHAR}, 
+        #{item.imageIndex,jdbcType=BIT}, #{item.dateCreated,jdbcType=TIMESTAMP}, #{item.createdBy,jdbcType=VARCHAR}, 
+        #{item.updatedBy,jdbcType=VARCHAR}, #{item.dateUpdated,jdbcType=TIMESTAMP}, #{item.deleteFlag,jdbcType=BIT}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.shop.model.IndexImage">
+    <!--@mbg.generated-->
+    insert into index_image
+    (id, image_name, image_path, image_index, date_created, created_by, updated_by, date_updated, 
+      delete_flag)
+    values
+    (#{id,jdbcType=BIGINT}, #{imageName,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
+      #{imageIndex,jdbcType=BIT}, #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{dateUpdated,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=BIT}
+      )
+    on duplicate key update 
+    id = #{id,jdbcType=BIGINT}, 
+    image_name = #{imageName,jdbcType=VARCHAR}, 
+    image_path = #{imagePath,jdbcType=VARCHAR}, 
+    image_index = #{imageIndex,jdbcType=BIT}, 
+    date_created = #{dateCreated,jdbcType=TIMESTAMP}, 
+    created_by = #{createdBy,jdbcType=VARCHAR}, 
+    updated_by = #{updatedBy,jdbcType=VARCHAR}, 
+    date_updated = #{dateUpdated,jdbcType=TIMESTAMP}, 
+    delete_flag = #{deleteFlag,jdbcType=BIT}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.shop.model.IndexImage">
+    <!--@mbg.generated-->
+    insert into index_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="imageName != null">
+        image_name,
+      </if>
+      <if test="imagePath != null">
+        image_path,
+      </if>
+      <if test="imageIndex != null">
+        image_index,
+      </if>
+      <if test="dateCreated != null">
+        date_created,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="dateUpdated != null">
+        date_updated,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="imageName != null">
+        #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imageIndex != null">
+        #{imageIndex,jdbcType=BIT},
+      </if>
+      <if test="dateCreated != null">
+        #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="imageName != null">
+        image_name = #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imageIndex != null">
+        image_index = #{imageIndex,jdbcType=BIT},
+      </if>
+      <if test="dateCreated != null">
+        date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" /> from index_image where 1=1 order by image_index
+  </select>
+</mapper>
