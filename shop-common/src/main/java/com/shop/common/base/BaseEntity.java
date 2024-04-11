@@ -1,5 +1,9 @@
 package com.shop.common.base;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -7,33 +11,35 @@ import java.util.Date;
  * @Date ：Created in  2024/4/10 16:21
  * @Description：
  */
+@Data
 public class BaseEntity {
     /**
      * 主键ID
      */
-    private Long id;
+    @JsonSerialize(using = ToStringSerializer.class)
+    protected Long id;
     /**
      * 创建者
      */
-    private Date dateCreated;
+    protected Date createTime;
 
     /**
      * 创建时间
      */
-    private String createdBy;
+    protected String createBy;
 
     /**
      * 修改者
      */
-    private String updatedBy;
+    protected String updateBy;
 
     /**
      * 修改时间
      */
-    private Date dateUpdated;
+    protected Date updateTime;
 
     /**
      * 删除标志 true/false 删除/未删除
      */
-    private Boolean deleteFlag;
+    protected Boolean deleteFlag;
 }

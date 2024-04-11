@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mapper.StoreMapper">
+  <resultMap id="BaseResultMap" type="com.shop.model.Store">
+    <!--@mbg.generated-->
+    <!--@Table store-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="store_name" jdbcType="VARCHAR" property="storeName" />
+    <result column="store_disable" jdbcType="VARCHAR" property="storeDisable" />
+    <result column="store_end_time" jdbcType="TIMESTAMP" property="storeEndTime" />
+    <result column="store_logo" jdbcType="VARCHAR" property="storeLogo" />
+    <result column="store_address_detail" jdbcType="VARCHAR" property="storeAddressDetail" />
+    <result column="store_address_id_path" jdbcType="VARCHAR" property="storeAddressIdPath" />
+    <result column="store_address_path" jdbcType="VARCHAR" property="storeAddressPath" />
+    <result column="store_center" jdbcType="VARCHAR" property="storeCenter" />
+    <result column="store_desc" jdbcType="VARCHAR" property="storeDesc" />
+    <result column="product_num" jdbcType="INTEGER" property="productNum" />
+    <result column="collection_num" jdbcType="INTEGER" property="collectionNum" />
+    <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, store_name, store_disable, store_end_time, store_logo, store_address_detail, 
+    store_address_id_path, store_address_path, store_center, store_desc, product_num, 
+    collection_num, date_created, created_by, updated_by, date_updated, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from store
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from store
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.shop.model.Store">
+    <!--@mbg.generated-->
+    insert into store (id, store_name, store_disable, 
+      store_end_time, store_logo, store_address_detail, 
+      store_address_id_path, store_address_path, store_center, 
+      store_desc, product_num, collection_num, 
+      date_created, created_by, updated_by, 
+      date_updated, delete_flag)
+    values (#{id,jdbcType=BIGINT}, #{storeName,jdbcType=VARCHAR}, #{storeDisable,jdbcType=VARCHAR}, 
+      #{storeEndTime,jdbcType=TIMESTAMP}, #{storeLogo,jdbcType=VARCHAR}, #{storeAddressDetail,jdbcType=VARCHAR}, 
+      #{storeAddressIdPath,jdbcType=VARCHAR}, #{storeAddressPath,jdbcType=VARCHAR}, #{storeCenter,jdbcType=VARCHAR}, 
+      #{storeDesc,jdbcType=VARCHAR}, #{productNum,jdbcType=INTEGER}, #{collectionNum,jdbcType=INTEGER}, 
+      #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{dateUpdated,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.model.Store">
+    <!--@mbg.generated-->
+    insert into store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeName != null">
+        store_name,
+      </if>
+      <if test="storeDisable != null">
+        store_disable,
+      </if>
+      <if test="storeEndTime != null">
+        store_end_time,
+      </if>
+      <if test="storeLogo != null">
+        store_logo,
+      </if>
+      <if test="storeAddressDetail != null">
+        store_address_detail,
+      </if>
+      <if test="storeAddressIdPath != null">
+        store_address_id_path,
+      </if>
+      <if test="storeAddressPath != null">
+        store_address_path,
+      </if>
+      <if test="storeCenter != null">
+        store_center,
+      </if>
+      <if test="storeDesc != null">
+        store_desc,
+      </if>
+      <if test="productNum != null">
+        product_num,
+      </if>
+      <if test="collectionNum != null">
+        collection_num,
+      </if>
+      <if test="dateCreated != null">
+        date_created,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="dateUpdated != null">
+        date_updated,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDisable != null">
+        #{storeDisable,jdbcType=VARCHAR},
+      </if>
+      <if test="storeEndTime != null">
+        #{storeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeLogo != null">
+        #{storeLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressDetail != null">
+        #{storeAddressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressIdPath != null">
+        #{storeAddressIdPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressPath != null">
+        #{storeAddressPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCenter != null">
+        #{storeCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDesc != null">
+        #{storeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null">
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectionNum != null">
+        #{collectionNum,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreated != null">
+        #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.Store">
+    <!--@mbg.generated-->
+    update store
+    <set>
+      <if test="storeName != null">
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDisable != null">
+        store_disable = #{storeDisable,jdbcType=VARCHAR},
+      </if>
+      <if test="storeEndTime != null">
+        store_end_time = #{storeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeLogo != null">
+        store_logo = #{storeLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressDetail != null">
+        store_address_detail = #{storeAddressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressIdPath != null">
+        store_address_id_path = #{storeAddressIdPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressPath != null">
+        store_address_path = #{storeAddressPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCenter != null">
+        store_center = #{storeCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDesc != null">
+        store_desc = #{storeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectionNum != null">
+        collection_num = #{collectionNum,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreated != null">
+        date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.model.Store">
+    <!--@mbg.generated-->
+    update store
+    set store_name = #{storeName,jdbcType=VARCHAR},
+      store_disable = #{storeDisable,jdbcType=VARCHAR},
+      store_end_time = #{storeEndTime,jdbcType=TIMESTAMP},
+      store_logo = #{storeLogo,jdbcType=VARCHAR},
+      store_address_detail = #{storeAddressDetail,jdbcType=VARCHAR},
+      store_address_id_path = #{storeAddressIdPath,jdbcType=VARCHAR},
+      store_address_path = #{storeAddressPath,jdbcType=VARCHAR},
+      store_center = #{storeCenter,jdbcType=VARCHAR},
+      store_desc = #{storeDesc,jdbcType=VARCHAR},
+      product_num = #{productNum,jdbcType=INTEGER},
+      collection_num = #{collectionNum,jdbcType=INTEGER},
+      date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update store
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="store_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="store_disable = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeDisable,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="store_end_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeEndTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="store_logo = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeLogo,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="store_address_detail = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeAddressDetail,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="store_address_id_path = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeAddressIdPath,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="store_address_path = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeAddressPath,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="store_center = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeCenter,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="store_desc = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storeDesc,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_num = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.productNum,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="collection_num = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.collectionNum,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="date_created = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.dateCreated,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="created_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createdBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updatedBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="date_updated = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.dateUpdated,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="delete_flag = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.deleteFlag,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into store
+    (id, store_name, store_disable, store_end_time, store_logo, store_address_detail, 
+      store_address_id_path, store_address_path, store_center, store_desc, product_num, 
+      collection_num, date_created, created_by, updated_by, date_updated, delete_flag
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.storeName,jdbcType=VARCHAR}, #{item.storeDisable,jdbcType=VARCHAR}, 
+        #{item.storeEndTime,jdbcType=TIMESTAMP}, #{item.storeLogo,jdbcType=VARCHAR}, #{item.storeAddressDetail,jdbcType=VARCHAR}, 
+        #{item.storeAddressIdPath,jdbcType=VARCHAR}, #{item.storeAddressPath,jdbcType=VARCHAR}, 
+        #{item.storeCenter,jdbcType=VARCHAR}, #{item.storeDesc,jdbcType=VARCHAR}, #{item.productNum,jdbcType=INTEGER}, 
+        #{item.collectionNum,jdbcType=INTEGER}, #{item.dateCreated,jdbcType=TIMESTAMP}, 
+        #{item.createdBy,jdbcType=VARCHAR}, #{item.updatedBy,jdbcType=VARCHAR}, #{item.dateUpdated,jdbcType=TIMESTAMP}, 
+        #{item.deleteFlag,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.shop.model.Store">
+    <!--@mbg.generated-->
+    insert into store
+    (id, store_name, store_disable, store_end_time, store_logo, store_address_detail, 
+      store_address_id_path, store_address_path, store_center, store_desc, product_num, 
+      collection_num, date_created, created_by, updated_by, date_updated, delete_flag
+      )
+    values
+    (#{id,jdbcType=BIGINT}, #{storeName,jdbcType=VARCHAR}, #{storeDisable,jdbcType=VARCHAR}, 
+      #{storeEndTime,jdbcType=TIMESTAMP}, #{storeLogo,jdbcType=VARCHAR}, #{storeAddressDetail,jdbcType=VARCHAR}, 
+      #{storeAddressIdPath,jdbcType=VARCHAR}, #{storeAddressPath,jdbcType=VARCHAR}, #{storeCenter,jdbcType=VARCHAR}, 
+      #{storeDesc,jdbcType=VARCHAR}, #{productNum,jdbcType=INTEGER}, #{collectionNum,jdbcType=INTEGER}, 
+      #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{dateUpdated,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
+    on duplicate key update 
+    id = #{id,jdbcType=BIGINT}, 
+    store_name = #{storeName,jdbcType=VARCHAR}, 
+    store_disable = #{storeDisable,jdbcType=VARCHAR}, 
+    store_end_time = #{storeEndTime,jdbcType=TIMESTAMP}, 
+    store_logo = #{storeLogo,jdbcType=VARCHAR}, 
+    store_address_detail = #{storeAddressDetail,jdbcType=VARCHAR}, 
+    store_address_id_path = #{storeAddressIdPath,jdbcType=VARCHAR}, 
+    store_address_path = #{storeAddressPath,jdbcType=VARCHAR}, 
+    store_center = #{storeCenter,jdbcType=VARCHAR}, 
+    store_desc = #{storeDesc,jdbcType=VARCHAR}, 
+    product_num = #{productNum,jdbcType=INTEGER}, 
+    collection_num = #{collectionNum,jdbcType=INTEGER}, 
+    date_created = #{dateCreated,jdbcType=TIMESTAMP}, 
+    created_by = #{createdBy,jdbcType=VARCHAR}, 
+    updated_by = #{updatedBy,jdbcType=VARCHAR}, 
+    date_updated = #{dateUpdated,jdbcType=TIMESTAMP}, 
+    delete_flag = #{deleteFlag,jdbcType=INTEGER}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.shop.model.Store">
+    <!--@mbg.generated-->
+    insert into store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeName != null">
+        store_name,
+      </if>
+      <if test="storeDisable != null">
+        store_disable,
+      </if>
+      <if test="storeEndTime != null">
+        store_end_time,
+      </if>
+      <if test="storeLogo != null">
+        store_logo,
+      </if>
+      <if test="storeAddressDetail != null">
+        store_address_detail,
+      </if>
+      <if test="storeAddressIdPath != null">
+        store_address_id_path,
+      </if>
+      <if test="storeAddressPath != null">
+        store_address_path,
+      </if>
+      <if test="storeCenter != null">
+        store_center,
+      </if>
+      <if test="storeDesc != null">
+        store_desc,
+      </if>
+      <if test="productNum != null">
+        product_num,
+      </if>
+      <if test="collectionNum != null">
+        collection_num,
+      </if>
+      <if test="dateCreated != null">
+        date_created,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="dateUpdated != null">
+        date_updated,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDisable != null">
+        #{storeDisable,jdbcType=VARCHAR},
+      </if>
+      <if test="storeEndTime != null">
+        #{storeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeLogo != null">
+        #{storeLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressDetail != null">
+        #{storeAddressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressIdPath != null">
+        #{storeAddressIdPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressPath != null">
+        #{storeAddressPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCenter != null">
+        #{storeCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDesc != null">
+        #{storeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null">
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectionNum != null">
+        #{collectionNum,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreated != null">
+        #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeName != null">
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDisable != null">
+        store_disable = #{storeDisable,jdbcType=VARCHAR},
+      </if>
+      <if test="storeEndTime != null">
+        store_end_time = #{storeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeLogo != null">
+        store_logo = #{storeLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressDetail != null">
+        store_address_detail = #{storeAddressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressIdPath != null">
+        store_address_id_path = #{storeAddressIdPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddressPath != null">
+        store_address_path = #{storeAddressPath,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCenter != null">
+        store_center = #{storeCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDesc != null">
+        store_desc = #{storeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectionNum != null">
+        collection_num = #{collectionNum,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreated != null">
+        date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
