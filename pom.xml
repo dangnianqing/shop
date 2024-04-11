@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>shop-common</module>
+        <module>shop-service</module>
+        <module>shop-manager-api</module>
+        <module>shop-buyer-api</module>
+
+    </modules>
+    <groupId>com.shop</groupId>
+    <artifactId>shop</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <spring-boot.version>2.7.5</spring-boot.version>
+        <!--        <java.version>1.17</java.version>-->
+        <shop.version>1.0.0-SNAPSHOT</shop.version>
+        <shop-common.version>1.0.0</shop-common.version>
+        <shop-service.version>1.0.0</shop-service.version>
+        <shop-buyer-api.version>1.0.0</shop-buyer-api.version>
+        <shop-manager-api.version>1.0.0</shop-manager-api.version>
+        <shop-seller-api.version>1.0.1</shop-seller-api.version>
+        <shop-buyer-service.version>1.0.0</shop-buyer-service.version>
+        <shop-manager-service.version>1.0.0</shop-manager-service.version>
+        <shop-seller-service.version>1.0.0</shop-seller-service.version>
+        <shop-consumer-api.version>1.0.0</shop-consumer-api.version>
+        <shop-consumer-service.version>1.0.0</shop-consumer-service.version>
+        <shop-task.version>1.0.0</shop-task.version>
+        <jwt-version>0.11.2</jwt-version>
+        <sring-integration-version>5.4.10</sring-integration-version>
+        <sring-security-version>5.4.8</sring-security-version>
+        <redisson-version>3.15.6</redisson-version>
+        <weixin.version>4.5.0</weixin.version>
+    </properties>
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+        <!--        <plugins>-->
+        <!--            <plugin>-->
+        <!--                <groupId>org.springframework.boot</groupId>-->
+        <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+        <!--                <configuration>-->
+        <!--                    <excludes>-->
+        <!--                        <exclude>-->
+        <!--                            <groupId>org.projectlombok</groupId>-->
+        <!--                            <artifactId>lombok</artifactId>-->
+        <!--                        </exclude>-->
+        <!--                    </excludes>-->
+        <!--                </configuration>-->
+        <!--            </plugin>-->
+        <!--        </plugins>-->
+    </build>
+
+</project>
