@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shop.mapper.IndexImageMapper">
-  <resultMap id="BaseResultMap" type="com.shop.model.IndexImage">
+<mapper namespace="com.shop.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.shop.model.SysUser">
     <!--@mbg.generated-->
-    <!--@Table index_image-->
+    <!--@Table sys_user-->
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="image_name" jdbcType="VARCHAR" property="imageName" />
-    <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
-    <result column="image_index" jdbcType="INTEGER" property="imageIndex" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
@@ -16,47 +16,47 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, image_name, image_path, image_index, create_time, create_by, update_by, update_time, 
+    id, user_name, mobile, `password`, create_time, create_by, update_by, update_time, 
     delete_flag
   </sql>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
-    from index_image
+    from sys_user
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
     <!--@mbg.generated-->
-    delete from index_image
+    delete from sys_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.shop.model.IndexImage">
+  <insert id="insert" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
-    insert into index_image (id, image_name, image_path, 
-      image_index, create_time, create_by, 
+    insert into sys_user (id, user_name, mobile, 
+      `password`, create_time, create_by, 
       update_by, update_time, delete_flag
       )
-    values (#{id,jdbcType=BIGINT}, #{imageName,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
-      #{imageIndex,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
       #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.shop.model.IndexImage">
+  <insert id="insertSelective" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
-    insert into index_image
+    insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="imageName != null">
-        image_name,
+      <if test="userName != null">
+        user_name,
       </if>
-      <if test="imagePath != null">
-        image_path,
+      <if test="mobile != null">
+        mobile,
       </if>
-      <if test="imageIndex != null">
-        image_index,
+      <if test="password != null">
+        `password`,
       </if>
       <if test="createTime != null">
         create_time,
@@ -78,14 +78,14 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="imageName != null">
-        #{imageName,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="imagePath != null">
-        #{imagePath,jdbcType=VARCHAR},
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="imageIndex != null">
-        #{imageIndex,jdbcType=INTEGER},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -104,18 +104,18 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByIdSelective" parameterType="com.shop.model.IndexImage">
+  <update id="updateByIdSelective" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
-    update index_image
+    update sys_user
     <set>
-      <if test="imageName != null">
-        image_name = #{imageName,jdbcType=VARCHAR},
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="imagePath != null">
-        image_path = #{imagePath,jdbcType=VARCHAR},
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="imageIndex != null">
-        image_index = #{imageIndex,jdbcType=INTEGER},
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -135,12 +135,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateById" parameterType="com.shop.model.IndexImage">
+  <update id="updateById" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
-    update index_image
-    set image_name = #{imageName,jdbcType=VARCHAR},
-      image_path = #{imagePath,jdbcType=VARCHAR},
-      image_index = #{imageIndex,jdbcType=INTEGER},
+    update sys_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -150,21 +150,21 @@
   </update>
   <update id="updateBatch" parameterType="java.util.List">
     <!--@mbg.generated-->
-    update index_image
+    update sys_user
     <trim prefix="set" suffixOverrides=",">
-      <trim prefix="image_name = case" suffix="end,">
+      <trim prefix="user_name = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=BIGINT} then #{item.imageName,jdbcType=VARCHAR}
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userName,jdbcType=VARCHAR}
         </foreach>
       </trim>
-      <trim prefix="image_path = case" suffix="end,">
+      <trim prefix="mobile = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=BIGINT} then #{item.imagePath,jdbcType=VARCHAR}
+          when id = #{item.id,jdbcType=BIGINT} then #{item.mobile,jdbcType=VARCHAR}
         </foreach>
       </trim>
-      <trim prefix="image_index = case" suffix="end,">
+      <trim prefix="`password` = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=BIGINT} then #{item.imageIndex,jdbcType=INTEGER}
+          when id = #{item.id,jdbcType=BIGINT} then #{item.password,jdbcType=VARCHAR}
         </foreach>
       </trim>
       <trim prefix="create_time = case" suffix="end,">
@@ -200,53 +200,53 @@
   </update>
   <insert id="batchInsert" parameterType="map">
     <!--@mbg.generated-->
-    insert into index_image
-    (id, image_name, image_path, image_index, create_time, create_by, update_by, update_time, 
+    insert into sys_user
+    (id, user_name, mobile, `password`, create_time, create_by, update_by, update_time, 
       delete_flag)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=BIGINT}, #{item.imageName,jdbcType=VARCHAR}, #{item.imagePath,jdbcType=VARCHAR}, 
-        #{item.imageIndex,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR}, 
+      (#{item.id,jdbcType=BIGINT}, #{item.userName,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}, 
+        #{item.password,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR}, 
         #{item.updateBy,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleteFlag,jdbcType=INTEGER}
         )
     </foreach>
   </insert>
-  <insert id="insertOrUpdate" parameterType="com.shop.model.IndexImage">
+  <insert id="insertOrUpdate" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
-    insert into index_image
-    (id, image_name, image_path, image_index, create_time, create_by, update_by, update_time, 
+    insert into sys_user
+    (id, user_name, mobile, `password`, create_time, create_by, update_by, update_time, 
       delete_flag)
     values
-    (#{id,jdbcType=BIGINT}, #{imageName,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
-      #{imageIndex,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+    (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
       #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}
       )
     on duplicate key update 
     id = #{id,jdbcType=BIGINT}, 
-    image_name = #{imageName,jdbcType=VARCHAR}, 
-    image_path = #{imagePath,jdbcType=VARCHAR}, 
-    image_index = #{imageIndex,jdbcType=INTEGER}, 
+    user_name = #{userName,jdbcType=VARCHAR}, 
+    mobile = #{mobile,jdbcType=VARCHAR}, 
+    `password` = #{password,jdbcType=VARCHAR}, 
     create_time = #{createTime,jdbcType=TIMESTAMP}, 
     create_by = #{createBy,jdbcType=VARCHAR}, 
     update_by = #{updateBy,jdbcType=VARCHAR}, 
     update_time = #{updateTime,jdbcType=TIMESTAMP}, 
     delete_flag = #{deleteFlag,jdbcType=INTEGER}
   </insert>
-  <insert id="insertOrUpdateSelective" parameterType="com.shop.model.IndexImage">
+  <insert id="insertOrUpdateSelective" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
-    insert into index_image
+    insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="imageName != null">
-        image_name,
+      <if test="userName != null">
+        user_name,
       </if>
-      <if test="imagePath != null">
-        image_path,
+      <if test="mobile != null">
+        mobile,
       </if>
-      <if test="imageIndex != null">
-        image_index,
+      <if test="password != null">
+        `password`,
       </if>
       <if test="createTime != null">
         create_time,
@@ -269,14 +269,14 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="imageName != null">
-        #{imageName,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="imagePath != null">
-        #{imagePath,jdbcType=VARCHAR},
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="imageIndex != null">
-        #{imageIndex,jdbcType=INTEGER},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -299,14 +299,14 @@
       <if test="id != null">
         id = #{id,jdbcType=BIGINT},
       </if>
-      <if test="imageName != null">
-        image_name = #{imageName,jdbcType=VARCHAR},
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="imagePath != null">
-        image_path = #{imagePath,jdbcType=VARCHAR},
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="imageIndex != null">
-        image_index = #{imageIndex,jdbcType=INTEGER},
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -325,9 +325,16 @@
       </if>
     </trim>
   </insert>
-
-  <select id="selectList" resultMap="BaseResultMap">
+  <select id="selectList">
     select
-    <include refid="Base_Column_List" /> from index_image where 1=1 order by image_index
+    <include refid="Base_Column_List" /> from sys_user
   </select>
+
+  <delete id="deleteByIds">
+    delete from sys_user
+    where id in
+    <foreach collection="userIds" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>

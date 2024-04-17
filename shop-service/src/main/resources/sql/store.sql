@@ -1,15 +1,106 @@
-CREATE TABLE `store` (
-`id` bigint NOT NULL COMMENT 'ID',
-`store_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '店铺名称',
-`store_disable` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '店铺状态',
-`store_end_time` datetime(6) DEFAULT NULL COMMENT '店铺关闭时间',
-`store_logo` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '店铺logo',
-`store_address_detail` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '详细地址',
-`store_address_id_path` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '地址id',
-`store_address_path` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '地址名称',
-`store_center` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '经纬度',
-`store_desc` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '店铺简介',
-`product_num` int DEFAULT NULL COMMENT '商品数量',
-`collection_num` int DEFAULT NULL COMMENT '收藏数量',
-PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1348810750596767744, '设置', 0, 0, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1348810864748945408, '日志', 0, 0, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349237129847005184, '系统设置', 1, 1348810750596767744, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349237207378714624, '用户管理', 1, 1348810750596767744, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349237928434098176, '系统监控', 1, 1348810864748945408, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349246048900243456, '系统设置', 2, 1349237129847005184, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349246347597602816, 'OSS资源', 2, 1349237129847005184, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349246468775239680, '行政地区', 2, 1349237129847005184, 4);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349246671158796288, '物流公司', 2, 1349237129847005184, 5);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349246896661356544, '信任登录', 2, 1349237129847005184, 6);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349247081504333824, '支付设置', 2, 1349237129847005184, 7);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349247640584085504, '敏感词', 2, 1349237129847005184, 8);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349254815809298432, '用户管理', 2, 1349237207378714624, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349255214977015808, '部门管理', 2, 1349237207378714624, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349255404425338880, '角色权限', 2, 1349237207378714624, 4);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1349256082979840000, '日志管理', 2, 1349237928434098176, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1357584224760102912, 'APP版本', 2, 1349237129847005184, 9);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1357873097859923969, '菜单管理', 2, 1349237207378714624, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367038467288072192, '会员', 0, 0, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367039534616805376, '订单', 0, 0, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367039950368800768, '商品', 0, 0, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367040067201138688, '促销', 0, 0, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367040599596728320, '运营', 0, 0, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367040819248234496, '统计', 0, 0, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367041332861730816, '会员管理', 1, 1367038467288072192, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367041461194850304, '会员列表', 2, 1367041332861730816, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367041575619657728, '回收站', 2, 1367041332861730816, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367042490443497472, '预存款', 1, 1367038467288072192, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367042664410644480, '会员资金', 2, 1367042490443497472, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367042804944994304, '充值记录', 2, 1367042490443497472, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367042804944994305, '提现申请', 2, 1367042490443497472, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367042917113266176, '评价', 1, 1367038467288072192, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367043020976816128, '会员评价', 2, 1367042917113266176, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367043443917848576, '订单', 1, 1367039534616805376, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367043505771249664, '售后', 1, 1367039534616805376, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367043642379730944, '商品订单', 2, 1367043443917848576, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367043791105556480, '虚拟订单', 2, 1367043443917848576, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367043980407078912, '售后管理', 2, 1367043505771249664, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367044121163726848, '交易投诉', 2, 1367043505771249664, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367044247978508288, '售后原因', 2, 1367043505771249664, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367044376391319552, '商品管理', 1, 1367039950368800768, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367044657296441344, '关联管理', 1, 1367039950368800768, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367045529720061952, '平台商品', 2, 1367044376391319552, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367045630710513664, '商品审核', 2, 1367044376391319552, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367045794284175360, '商品分类', 2, 1367044657296441344, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367045921434501120, '品牌列表', 2, 1367044657296441344, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367046068369358848, '规格列表', 2, 1367044657296441344, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367046266214678528, '计量单位', 2, 1367044657296441344, 4);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367048084701315072, '店铺', 0, 0, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367048684339986432, '店铺管理', 1, 1367048084701315072, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367048754229673984, ' 店铺结算', 1, 1367048084701315072, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367048832210173952, '店铺列表', 2, 1367048684339986432, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367048967635861504, '店铺审核', 2, 1367048684339986432, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367049068122996736, '店铺结算', 2, 1367048754229673984, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367049214198022144, '促销管理', 1, 1367040067201138688, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367049384792948736, '优惠券', 2, 1367049214198022144, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367049500782231552, '满额活动', 2, 1367049214198022144, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367049611578966016, '秒杀活动', 2, 1367049214198022144, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367049712657498112, '拼团活动', 2, 1367049214198022144, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367050250249830400, '文章管理', 1, 1367040599596728320, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367050320584114176, '楼层装修', 1, 1367040599596728320, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367050530030878720, 'PC端', 2, 1367050320584114176, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367050673312497664, '移动端', 2, 1367050320584114176, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367050829697122304, '搜索热词', 2, 1367050250249830400, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367050939084570624, '文章分类', 2, 1367050250249830400, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367051048232943616, '文章管理', 2, 1367050250249830400, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367052616634204160, '统计', 1, 1367040819248234496, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367052705725415424, '会员统计', 2, 1367052616634204160, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367052805503713280, '订单统计', 2, 1367052616634204160, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367052915314786304, '商品统计', 2, 1367052616634204160, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1367053087121866752, '流量统计', 2, 1367052616634204160, 4);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1372807928452481024, '流水', 1, 1367039534616805376, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1372808148565360640, '收款记录', 2, 1372807928452481024, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1372808352295288832, '退款流水', 2, 1372807928452481024, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1373166892465782784, '积分', 1, 1367038467288072192, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1373167227385151488, '积分历史', 2, 1373166892465782784, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1373791578371391488, '商家对账', 2, 1367048754229673984, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374154349697040384, '意见反馈', 1, 1367040599596728320, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374155741123837952, '意见反馈', 2, 1374154349697040384, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374173575405109248, '分销管理', 1, 1367040599596728320, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374177618072436736, '分销设置', 2, 1374173575405109248, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374177789581721600, '分销商品', 2, 1374173575405109248, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374177910411231232, '分销订单', 2, 1374173575405109248, 4);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374178079181635584, '分销申请', 2, 1374173575405109248, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374178303975358464, '分销员', 2, 1374173575405109248, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1374916594269945856, '验证码', 2, 1349237129847005184, 7);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1376450531517530112, '站内信', 1, 1367040599596728320, 5);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1376450662098796544, '站内信', 2, 1376450531517530112, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1376450766817984512, '短信管理', 1, 1367040599596728320, 6);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1376450876423536640, '短信', 2, 1376450766817984512, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1384035281702748160, '微信消息', 2, 1349237129847005184, 5);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1403988156444962818, '券活动', 2, 1367049214198022144, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1407601962899230721, '直播管理', 1, 1367040067201138688, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1407602049759072258, '直播管理', 2, 1407601962899230721, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1407602441964244994, '积分活动', 1, 1367040067201138688, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1407602516912263170, '积分商品', 2, 1407602441964244994, 1);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1407602673334636546, '积分分类', 2, 1407602441964244994, 2);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1410862675914764290, '分销提现', 2, 1374173575405109248, 5);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1419926569920536578, 'ES分词', 2, 1367050250249830400, 4);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1430799171593535490, '砍价活动', 2, 1367049214198022144, 6);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1495665663207432193, '分销等级', 2, 1374173575405109248, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1562606037052764162, '引流管理', 1, 1367040067201138688, 3);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1562606150290583553, '渠道码', 2, 1562606037052764162, 0);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1569955430627938306, '分销关系', 2, 1374173575405109248, 8);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1660814751714824192, '系统管理', 1, 1367040599596728320, 6);
+INSERT INTO sys_menu (`id`, `name`, `level`, `parent_id`, `sort_order`) VALUES (1660814960079458304, '商品ES同步', 2, 1660814751714824192, 0);

@@ -1,13 +1,12 @@
 package com.shop.mapper;
 
 import com.shop.common.base.BaseMapper;
-import com.shop.model.ProductCategory;
+import com.shop.model.SysMenu;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface ProductCategoryMapper extends BaseMapper<ProductCategory> {
+public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
-    List<ProductCategory> selectFather();
 }

@@ -1,8 +1,13 @@
 package com.shop.common.base;
 
+import cn.hutool.core.util.StrUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * @Author ：zhanghaijun
@@ -66,5 +71,15 @@ public class ServiceImpl<M extends BaseMapper<T>, T> implements IService<T> {
     @Override
     public boolean updateBatchSelective(Collection<T> collection) {
         return baseMapper.updateBatchSelective(collection);
+    }
+
+    @Override
+    public PageInfo<T> selectPage(PageParam pageParam, Map<String, Object> param) {
+        if (StringUtil.isNotEmpty(pageParam.getSort())) {
+            PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(), StrUtil.toUnderlineCase(pageParam.getSort()) + " " + pageParam.getOrder());
+        } else {
+            PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize());
+        }
+        return new PageInfo(this.baseMapper.selectList(param));
     }
 }

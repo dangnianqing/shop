@@ -28,14 +28,14 @@
     store_address_id_path, store_address_path, store_center, store_desc, product_num, 
     collection_num, date_created, created_by, updated_by, date_updated, delete_flag
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
     from store
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteById" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from store
     where id = #{id,jdbcType=BIGINT}
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.Store">
+  <update id="updateByIdSelective" parameterType="com.shop.model.Store">
     <!--@mbg.generated-->
     update store
     <set>
@@ -220,7 +220,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.shop.model.Store">
+  <update id="updateById" parameterType="com.shop.model.Store">
     <!--@mbg.generated-->
     update store
     set store_name = #{storeName,jdbcType=VARCHAR},

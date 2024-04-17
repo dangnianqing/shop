@@ -101,6 +101,8 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 server:
-  port: 8888
+  port: 8787
+  servlet:
+    context-path: /buyer-api
 
 

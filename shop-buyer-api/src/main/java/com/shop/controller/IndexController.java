@@ -2,6 +2,7 @@ package com.shop.controller;
 
 import com.shop.common.result.RequestResult;
 import com.shop.model.IndexImage;
+import com.shop.model.ProductCategory;
 import com.shop.service.IndexImageService;
 import com.shop.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class IndexController {
         return RequestResult.success(indexImageService.selectList());
     }
 
-    @GetMapping("/addd")
-    public RequestResult<Boolean> addList() {
-        return RequestResult.success(productCategoryService.add());
+    @PostMapping("/category")
+    public RequestResult<List<ProductCategory>> addList() {
+        return RequestResult.success(productCategoryService.selectFather());
     }
 }

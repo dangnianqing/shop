@@ -3,6 +3,8 @@ package com.shop.common.base;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author ：zhanghaijun
@@ -31,4 +33,6 @@ public interface BaseMapper<T> {
     boolean batchInsert(@Param("list") Collection<T> Collection);
 
     boolean updateBatchSelective(Collection<T> Collection);
+
+    List<T>  selectList(@Param("param") Map<String, Object> param);
 }

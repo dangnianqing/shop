@@ -14,20 +14,19 @@ public class IndexImage extends BaseEntity implements Serializable {
 
 
     /**
-     * 商品编码
+     * 图片名称
      */
     private String imageName;
 
     /**
-     * 商品名称
+     * 图片地址
      */
     private String imagePath;
 
     /**
-     * 商品大类
+     * 图片顺序
      */
-    private byte[] imageIndex;
-
+    private Integer imageIndex;
 
 
     private static final long serialVersionUID = 1L;

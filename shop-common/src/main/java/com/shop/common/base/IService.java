@@ -1,6 +1,9 @@
 package com.shop.common.base;
 
+import com.github.pagehelper.PageInfo;
+
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * @Author ：zhanghaijun
@@ -29,4 +32,6 @@ public interface IService<T> {
     boolean batchInsert(Collection<T> collection);
 
     boolean updateBatchSelective(Collection<T> collection);
+
+   PageInfo<T> selectPage(PageParam pageParam,Map<String,Object> param);
 }
