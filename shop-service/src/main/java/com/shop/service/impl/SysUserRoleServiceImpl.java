@@ -1,5 +1,6 @@
 package com.shop.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.shop.common.base.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +20,15 @@ public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUs
     public Boolean insertUserRole(Long userId, List<Long> roleIds) {
         List<SysUserRole> list = new ArrayList<>();
         this.deleteByUserId(userId);
-        for (Long roleId : roleIds) {
-            SysUserRole userRole = new SysUserRole(userId, roleId);
-            list.add(userRole);
+        if (CollectionUtil.isNotEmpty(roleIds)) {
+            roleIds.forEach(roleId -> {
+                SysUserRole userRole = new SysUserRole(userId, roleId);
+                list.add(userRole);
+            });
+            return batchInsert(list);
         }
-        return batchInsert(list);
+        return true;
+
     }
 
     @Override

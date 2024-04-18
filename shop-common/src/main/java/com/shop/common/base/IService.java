@@ -33,5 +33,5 @@ public interface IService<T> {
 
     boolean updateBatchSelective(Collection<T> collection);
 
-   PageInfo<T> selectPage(PageParam pageParam,Map<String,Object> param);
+   PageInfo<T> selectPage(Integer currentPage,Integer pageSize,Map<String,Object> param);
 }

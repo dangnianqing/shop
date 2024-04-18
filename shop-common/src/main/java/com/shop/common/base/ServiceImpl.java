@@ -74,12 +74,8 @@ public class ServiceImpl<M extends BaseMapper<T>, T> implements IService<T> {
     }
 
     @Override
-    public PageInfo<T> selectPage(PageParam pageParam, Map<String, Object> param) {
-        if (StringUtil.isNotEmpty(pageParam.getSort())) {
-            PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(), StrUtil.toUnderlineCase(pageParam.getSort()) + " " + pageParam.getOrder());
-        } else {
-            PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize());
-        }
+    public PageInfo<T> selectPage(Integer pageNumber, Integer pageSize, Map<String, Object> param) {
+        PageHelper.startPage(pageNumber, pageSize);
         return new PageInfo(this.baseMapper.selectList(param));
     }
 }

@@ -7,13 +7,11 @@ import com.shop.model.SysUser;
 public interface SysUserService extends IService<SysUser> {
 
 
-    Boolean update(SysUser user);
-
-    Boolean save(SysUser user);
-
     Boolean deleteList(List<Long> userIds);
 
     Boolean delete(Long userId);
 
     SysUser select(Long id);
+
+    Boolean saveOrUpdate(SysUser user);
 }

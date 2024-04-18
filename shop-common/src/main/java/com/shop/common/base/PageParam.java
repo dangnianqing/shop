@@ -11,22 +11,12 @@ public class PageParam implements Serializable {
     /**
      * 页号
      */
-    private Integer pageNumber = 1;
+    protected Integer pageNumber = 1;
 
     /**
      * 页面大小
      */
-    private Integer pageSize = 10;
-
-    /**
-     * 排序字段
-     */
-    private String sort;
-
-    /**
-     * 排序方式 asc/desc
-     */
-    private String order = "desc";
+    protected Integer pageSize = 10;
 
 
     public Integer getPageNumber() {
@@ -45,22 +35,6 @@ public class PageParam implements Serializable {
         this.pageSize = pageSize;
     }
 
-
-    public String getSort() {
-        return sort;
-    }
-
-    public void setSort(String sort) {
-        this.sort = sort;
-    }
-
-    public String getOrder() {
-        return order;
-    }
-
-    public void setOrder(String order) {
-        this.order = order;
-    }
 
     public PageParam(Integer pageNumber, Integer pageSize) {
         this.pageNumber = pageNumber;

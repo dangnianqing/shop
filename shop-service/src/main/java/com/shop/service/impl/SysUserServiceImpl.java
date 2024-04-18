@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 import com.shop.mapper.SysUserMapper;
@@ -17,18 +18,6 @@ import com.shop.service.SysUserService;
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
     @Autowired
     private SysUserRoleService userRoleService;
-
-    @Override
-    public Boolean update(SysUser user) {
-        userRoleService.insertUserRole(user.getId(), user.getRoleIds());
-        return this.updateByIdSelective(user);
-    }
-
-    @Override
-    public Boolean save(SysUser user) {
-        userRoleService.insertUserRole(user.getId(), user.getRoleIds());
-        return this.insertSelective(user);
-    }
 
     @Override
     public Boolean deleteList(List<Long> userIds) {
@@ -44,7 +33,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public SysUser select(Long id) {
-        SysUser user=this.selectById(id);
+        SysUser user = this.selectById(id);
         return user;
+    }
+
+    @Override
+    public Boolean saveOrUpdate(SysUser user) {
+        if (this.selectById(user.getId()) == null) {
+            this.insert(user);
+        } else {
+            this.updateByIdSelective(user);
+        }
+        boolean a = this.insertOrUpdateSelective(user);
+        userRoleService.insertUserRole(user.getId(), user.getRoleIds());
+        return a;
     }
 }

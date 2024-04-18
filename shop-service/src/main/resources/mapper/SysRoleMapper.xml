@@ -274,4 +274,13 @@
       #{roleId}
     </foreach>
   </delete>
+  <select id="selectList">
+    select
+    <include refid="Base_Column_List" /> from sys_role
+    <where>
+      <if test="param.name != null and param.name != '' ">
+        and name = #{param.name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
 </mapper>

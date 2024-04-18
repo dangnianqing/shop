@@ -7,6 +7,8 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
@@ -16,8 +18,8 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, user_name, mobile, `password`, create_time, create_by, update_by, update_time, 
-    delete_flag
+    id, user_name, mobile, image, `status`, `password`, create_time, create_by, update_by, 
+    update_time, delete_flag
   </sql>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -34,13 +36,13 @@
   <insert id="insert" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
     insert into sys_user (id, user_name, mobile, 
-      `password`, create_time, create_by, 
-      update_by, update_time, delete_flag
-      )
+      image, `status`, `password`, 
+      create_time, create_by, update_by, 
+      update_time, delete_flag)
     values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}
-      )
+      #{image,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
@@ -54,6 +56,12 @@
       </if>
       <if test="mobile != null">
         mobile,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="status != null">
+        `status`,
       </if>
       <if test="password != null">
         `password`,
@@ -83,6 +91,12 @@
       </if>
       <if test="mobile != null">
         #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
@@ -114,6 +128,12 @@
       <if test="mobile != null">
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
       <if test="password != null">
         `password` = #{password,jdbcType=VARCHAR},
       </if>
@@ -140,6 +160,8 @@
     update sys_user
     set user_name = #{userName,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
       `password` = #{password,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR},
@@ -160,6 +182,16 @@
       <trim prefix="mobile = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           when id = #{item.id,jdbcType=BIGINT} then #{item.mobile,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="image = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.image,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=INTEGER}
         </foreach>
       </trim>
       <trim prefix="`password` = case" suffix="end,">
@@ -201,30 +233,32 @@
   <insert id="batchInsert" parameterType="map">
     <!--@mbg.generated-->
     insert into sys_user
-    (id, user_name, mobile, `password`, create_time, create_by, update_by, update_time, 
-      delete_flag)
+    (id, user_name, mobile, image, `status`, `password`, create_time, create_by, update_by, 
+      update_time, delete_flag)
     values
     <foreach collection="list" item="item" separator=",">
       (#{item.id,jdbcType=BIGINT}, #{item.userName,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}, 
-        #{item.password,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR}, 
-        #{item.updateBy,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleteFlag,jdbcType=INTEGER}
-        )
+        #{item.image,jdbcType=VARCHAR}, #{item.status,jdbcType=INTEGER}, #{item.password,jdbcType=VARCHAR}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR}, #{item.updateBy,jdbcType=VARCHAR}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleteFlag,jdbcType=INTEGER})
     </foreach>
   </insert>
   <insert id="insertOrUpdate" parameterType="com.shop.model.SysUser">
     <!--@mbg.generated-->
     insert into sys_user
-    (id, user_name, mobile, `password`, create_time, create_by, update_by, update_time, 
-      delete_flag)
+    (id, user_name, mobile, image, `status`, `password`, create_time, create_by, update_by, 
+      update_time, delete_flag)
     values
     (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}
-      )
+      #{image,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
     on duplicate key update 
     id = #{id,jdbcType=BIGINT}, 
     user_name = #{userName,jdbcType=VARCHAR}, 
     mobile = #{mobile,jdbcType=VARCHAR}, 
+    image = #{image,jdbcType=VARCHAR}, 
+    `status` = #{status,jdbcType=INTEGER}, 
     `password` = #{password,jdbcType=VARCHAR}, 
     create_time = #{createTime,jdbcType=TIMESTAMP}, 
     create_by = #{createBy,jdbcType=VARCHAR}, 
@@ -244,6 +278,12 @@
       </if>
       <if test="mobile != null">
         mobile,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="status != null">
+        `status`,
       </if>
       <if test="password != null">
         `password`,
@@ -275,6 +315,12 @@
       <if test="mobile != null">
         #{mobile,jdbcType=VARCHAR},
       </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
@@ -305,6 +351,12 @@
       <if test="mobile != null">
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
       <if test="password != null">
         `password` = #{password,jdbcType=VARCHAR},
       </if>
@@ -328,12 +380,23 @@
   <select id="selectList">
     select
     <include refid="Base_Column_List" /> from sys_user
+    <where>
+      <if test="param.userName != null and param.userName != '' ">
+        and user_name = #{param.userName,jdbcType=VARCHAR}
+      </if>
+      <if test="param.mobile != null and param.mobile != '' ">
+        and mobile = #{param.mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="param.status != null  ">
+        and status = #{param.status,jdbcType=INTEGER}
+      </if>
+    </where>
   </select>
 
   <delete id="deleteByIds">
     delete from sys_user
     where id in
-    <foreach collection="userIds" item="id" open="(" separator="," close=")">
+    <foreach close=")" collection="userIds" item="id" open="(" separator=",">
       #{id}
     </foreach>
   </delete>
