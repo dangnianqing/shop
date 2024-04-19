@@ -7,9 +7,11 @@ import com.shop.model.SysUserRole;
 public interface SysUserRoleService extends IService<SysUserRole> {
 
 
-    Boolean insertUserRole(Long userId, List<Long> roleIds);
+    Boolean insertUserRole(Long userId, List<String> roleIds);
 
     Boolean deleteByUserId(Long userId);
 
     Boolean deleteByUserIds(List<Long> userIds);
+
+    List<String> selectByUserId(Long userId);
 }

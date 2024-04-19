@@ -1,5 +1,6 @@
 package com.shop.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.shop.common.base.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +21,14 @@ public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRo
     public Boolean insetRoleMenu(Long roleId, List<Long> menuIds) {
         List<SysRoleMenu> list = new ArrayList<>();
         this.deleteByRoleId(roleId);
-        for (Long menuId : menuIds) {
-            SysRoleMenu roleMenu = new SysRoleMenu(roleId, menuId);
-            list.add(roleMenu);
+        if (CollectionUtil.isNotEmpty(menuIds)) {
+            for (Long menuId : menuIds) {
+                SysRoleMenu roleMenu = new SysRoleMenu(roleId, menuId);
+                list.add(roleMenu);
+            }
+            return batchInsert(list);
         }
-        return batchInsert(list);
+        return true;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.shop.common.base;
 
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -7,6 +8,8 @@ import com.github.pagehelper.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -76,6 +79,14 @@ public class ServiceImpl<M extends BaseMapper<T>, T> implements IService<T> {
     @Override
     public PageInfo<T> selectPage(Integer pageNumber, Integer pageSize, Map<String, Object> param) {
         PageHelper.startPage(pageNumber, pageSize);
-        return new PageInfo(this.baseMapper.selectList(param));
+        return new PageInfo(this.selectList(param));
+    }
+
+    @Override
+    public List<T> selectList(Map<String, Object> param) {
+        if (param == null) {
+            param = new HashMap<>();
+        }
+        return this.baseMapper.selectList(param);
     }
 }

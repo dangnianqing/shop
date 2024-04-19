@@ -34,6 +34,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public SysUser select(Long id) {
         SysUser user = this.selectById(id);
+        user.setRoleIds(userRoleService.selectByUserId(id));
         return user;
     }
 
@@ -44,8 +45,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         } else {
             this.updateByIdSelective(user);
         }
-        boolean a = this.insertOrUpdateSelective(user);
-        userRoleService.insertUserRole(user.getId(), user.getRoleIds());
-        return a;
+
+        return userRoleService.insertUserRole(user.getId(), user.getRoleIds());
     }
 }

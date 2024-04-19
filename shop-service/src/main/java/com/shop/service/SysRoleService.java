@@ -10,10 +10,11 @@ public interface SysRoleService extends IService<SysRole> {
 
     Boolean update(SysRole user);
 
-    Boolean save(SysRole role);
-
-
     Boolean delete(Long roleId);
 
     Boolean deleteList(List<Long> roleIds);
+
+    Boolean saveOrUpdate(SysRole role);
+
+    SysRole select(Long id);
 }

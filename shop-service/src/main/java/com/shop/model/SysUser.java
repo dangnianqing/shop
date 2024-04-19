@@ -1,5 +1,7 @@
 package com.shop.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.shop.common.base.BaseEntity;
 
 import java.io.Serializable;
@@ -41,8 +43,7 @@ public class SysUser extends BaseEntity implements Serializable {
      */
     private String password;
 
-
-    private List<Long> roleIds;
+    private List<String> roleIds;
 
 
     private static final long serialVersionUID = 1L;
@@ -59,11 +60,4 @@ public class SysUser extends BaseEntity implements Serializable {
     public SysUser() {
     }
 
-}
-
-@Data
-class SysUserSearch extends PageParam {
-    private String userName;
-    private String mobile;
-    private Integer status;
 }

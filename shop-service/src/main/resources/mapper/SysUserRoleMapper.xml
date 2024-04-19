@@ -315,4 +315,10 @@
             #{userId}
         </foreach>
     </delete>
+
+    <select id="selectByUserId" resultType="java.lang.String">
+        select role_id
+        from sys_user_role
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
 </mapper>

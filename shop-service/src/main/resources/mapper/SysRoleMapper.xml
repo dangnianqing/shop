@@ -6,6 +6,7 @@
     <!--@Table sys_role-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
@@ -14,7 +15,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, create_time, create_by, update_by, update_time, delete_flag
+    id, `name`, remark, create_time, create_by, update_by, update_time, delete_flag
   </sql>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -30,12 +31,12 @@
   </delete>
   <insert id="insert" parameterType="com.shop.model.SysRole">
     <!--@mbg.generated-->
-    insert into sys_role (id, `name`, create_time, 
-      create_by, update_by, update_time, 
-      delete_flag)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleteFlag,jdbcType=INTEGER})
+    insert into sys_role (id, `name`, remark, 
+      create_time, create_by, update_by, 
+      update_time, delete_flag)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.SysRole">
     <!--@mbg.generated-->
@@ -46,6 +47,9 @@
       </if>
       <if test="name != null">
         `name`,
+      </if>
+      <if test="remark != null">
+        remark,
       </if>
       <if test="createTime != null">
         create_time,
@@ -69,6 +73,9 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -94,6 +101,9 @@
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -116,6 +126,7 @@
     <!--@mbg.generated-->
     update sys_role
     set `name` = #{name,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -130,6 +141,11 @@
       <trim prefix="`name` = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="remark = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.remark,jdbcType=VARCHAR}
         </foreach>
       </trim>
       <trim prefix="create_time = case" suffix="end,">
@@ -166,25 +182,26 @@
   <insert id="batchInsert" parameterType="map">
     <!--@mbg.generated-->
     insert into sys_role
-    (id, `name`, create_time, create_by, update_by, update_time, delete_flag)
+    (id, `name`, remark, create_time, create_by, update_by, update_time, delete_flag)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
-        #{item.createBy,jdbcType=VARCHAR}, #{item.updateBy,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, 
-        #{item.deleteFlag,jdbcType=INTEGER})
+      (#{item.id,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR}, #{item.updateBy,jdbcType=VARCHAR}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleteFlag,jdbcType=INTEGER})
     </foreach>
   </insert>
   <insert id="insertOrUpdate" parameterType="com.shop.model.SysRole">
     <!--@mbg.generated-->
     insert into sys_role
-    (id, `name`, create_time, create_by, update_by, update_time, delete_flag)
+    (id, `name`, remark, create_time, create_by, update_by, update_time, delete_flag)
     values
-    (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+    (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{deleteFlag,jdbcType=INTEGER})
     on duplicate key update 
     id = #{id,jdbcType=BIGINT}, 
     `name` = #{name,jdbcType=VARCHAR}, 
+    remark = #{remark,jdbcType=VARCHAR}, 
     create_time = #{createTime,jdbcType=TIMESTAMP}, 
     create_by = #{createBy,jdbcType=VARCHAR}, 
     update_by = #{updateBy,jdbcType=VARCHAR}, 
@@ -200,6 +217,9 @@
       </if>
       <if test="name != null">
         `name`,
+      </if>
+      <if test="remark != null">
+        remark,
       </if>
       <if test="createTime != null">
         create_time,
@@ -225,6 +245,9 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -249,6 +272,9 @@
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -270,7 +296,7 @@
   <delete id="deleteByIds">
     delete from sys_role
     where id in
-    <foreach collection="roleIds" item="roleId" open="(" separator="," close=")">
+    <foreach close=")" collection="roleIds" item="roleId" open="(" separator=",">
       #{roleId}
     </foreach>
   </delete>
