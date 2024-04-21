@@ -1,0 +1,2 @@
+INSERT INTO `sys_role` (`id`, `name`, `remark`, `create_time`, `create_by`, `update_by`, `update_time`, `delete_flag`) VALUES (1780879501225791488, '商品部', '商品部', '2024-04-18 16:42:14.890000', 'admin', 'admin', '2024-04-18 16:42:14.890000', 0);
+INSERT INTO `sys_role` (`id`, `name`, `remark`, `create_time`, `create_by`, `update_by`, `update_time`, `delete_flag`) VALUES (1780879721896513536, '信息部', '信息部~', '2024-04-18 16:43:07.502000', 'admin', 'admin', '2024-04-18 16:43:07.502000', 0);
