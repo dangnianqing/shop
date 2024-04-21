@@ -43,7 +43,7 @@ public class SysUser extends BaseEntity implements Serializable {
      */
     private String password;
 
-    private List<String> roleIds;
+    private List<Long> roleIds;
 
 
     private static final long serialVersionUID = 1L;

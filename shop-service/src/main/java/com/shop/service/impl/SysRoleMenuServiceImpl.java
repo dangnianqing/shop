@@ -40,4 +40,9 @@ public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRo
     public Boolean deleteByRoleIds(List<Long> roleIds) {
         return baseMapper.deleteByRoleIds(roleIds);
     }
+
+    @Override
+    public List<SysRoleMenu> selectListByRoleId(Long roleId) {
+        return baseMapper.selectListByRoleId(roleId);
+    }
 }

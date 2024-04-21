@@ -7,5 +7,14 @@ import com.shop.model.SysMenu;
 public interface SysMenuService extends IService<SysMenu> {
 
 
+    List<SysMenu>selectListTree();
 
+
+    List<SysMenu>selectParentId(Long parentId);
+
+    Boolean delete(Long id);
+
+    SysMenu select(Long id);
+
+    Boolean saveOrUpdate(SysMenu menu);
 }

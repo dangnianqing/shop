@@ -13,5 +13,5 @@ public interface SysUserRoleMapper extends BaseMapper<SysUserRole> {
 
     Boolean deleteByUserIds(@Param("userIds") List<Long> userId);
 
-    List<String> selectByUserId(@Param("userId")Long userId);
+    List<Long> selectByUserId(@Param("userId")Long userId);
 }

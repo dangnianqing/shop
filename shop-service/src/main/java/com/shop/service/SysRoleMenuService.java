@@ -12,4 +12,6 @@ public interface SysRoleMenuService extends IService<SysRoleMenu> {
     Boolean deleteByRoleId(Long roleId);
 
     Boolean deleteByRoleIds(List<Long> roleIds);
+
+    List<SysRoleMenu> selectListByRoleId(Long roleId);
 }

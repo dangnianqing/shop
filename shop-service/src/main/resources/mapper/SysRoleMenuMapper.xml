@@ -315,4 +315,8 @@
             #{roleId,jdbcType=BIGINT}
         </foreach>
     </delete>
+
+    <select id="selectListByRoleId" resultMap="BaseResultMap">
+        select id,role_id,menu_id from sys_role_menu where role_id=#{roleId}
+    </select>
 </mapper>

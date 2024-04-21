@@ -9,4 +9,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
+    List<SysMenu> selectParentId(@Param("parentId") Long parentId);
+
+    boolean deleteByIds(@Param("removeIds") List<Long> removeIds);
 }

@@ -17,12 +17,12 @@ import com.shop.service.SysUserRoleService;
 public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUserRole> implements SysUserRoleService {
 
     @Override
-    public Boolean insertUserRole(Long userId, List<String> roleIds) {
+    public Boolean insertUserRole(Long userId, List<Long> roleIds) {
         List<SysUserRole> list = new ArrayList<>();
         this.deleteByUserId(userId);
         if (CollectionUtil.isNotEmpty(roleIds)) {
             roleIds.forEach(roleId -> {
-                SysUserRole userRole = new SysUserRole(userId, Long.valueOf(roleId));
+                SysUserRole userRole = new SysUserRole(userId, roleId);
                 list.add(userRole);
             });
             return batchInsert(list);
@@ -42,7 +42,7 @@ public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUs
     }
 
     @Override
-    public List<String> selectByUserId(Long userId) {
+    public List<Long> selectByUserId(Long userId) {
         return baseMapper.selectByUserId(userId);
     }
 

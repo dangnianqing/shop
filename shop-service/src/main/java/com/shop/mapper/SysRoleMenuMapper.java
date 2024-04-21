@@ -14,4 +14,6 @@ public interface SysRoleMenuMapper extends BaseMapper<SysRoleMenu> {
     Boolean deleteByRoleId(@Param("roleId") Long roleId);
 
     Boolean deleteByRoleIds(@Param("roleIds") List<Long> roleIds);
+
+    List<SysRoleMenu> selectListByRoleId(@Param("roleId")Long roleId);
 }

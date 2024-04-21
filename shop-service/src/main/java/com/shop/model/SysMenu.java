@@ -2,7 +2,10 @@ package com.shop.model;
 
 import com.shop.common.base.BaseEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,11 +29,13 @@ public class SysMenu extends BaseEntity implements Serializable {
     * 父id
     */
     private Long parentId;
+    private String parentName;
 
     /**
     * 排序值
     */
     private Integer sortOrder;
 
+    private List<SysMenu> children = new ArrayList<>();
     private static final long serialVersionUID = 1L;
 }
